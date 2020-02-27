@@ -6,7 +6,9 @@
 
     <groupId>com.kafka.examples</groupId>
     <artifactId>kafka-examples</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
     <build>
         <plugins>
             <plugin>
@@ -20,6 +22,11 @@
         </plugins>
     </build>
 
+    <modules>
+        <module>basics</module>
+        <module>twitter</module>
+    </modules>
+
     <dependencies>
         <!-- Kafka -->
         <dependency>
@@ -32,12 +39,6 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.30</version>
-        </dependency>
-        <!-- Twitter -->
-        <dependency>
-            <groupId>com.twitter</groupId>
-            <artifactId>hbc-core</artifactId>
-            <version>2.2.0</version>
         </dependency>
     </dependencies>
 </project>
