@@ -1,9 +1,9 @@
-# Twitter Consumer & ElasticSearch Producer
+# Twitter Producer & ElasticSearch Consumer
 
 |Java Class|Functionality|
 |---|---|
-|TwitterProducer.java|Consumes tweets from Twitter's streaming API and sends them to Kafka topic|
-|ElasticSearchConsumer.java|Consumes tweets from Kafka topic and sends them to ES cluster|
+|TwitterProducer.java|Produces tweets from Twitter's streaming API to Kafka topic|
+|ElasticSearchConsumer.java|Consumes tweets to ElasticSearch from Kafka topic|
 
 Commands to run Kafka and Zookeeper in your local windows machine are available here - https://gist.github.com/HarshadRanganathan/3e0f2ddcc6c2627f16031969c15b3768
 
@@ -37,3 +37,7 @@ Note: You will get below error when you try to publish more than 1000 tweets to 
 ```
 java.lang.IllegalArgumentException: Limit of total fields [1000] in index [twitter] has been exceeded
 ```
+
+## Kafka Streams
+
+Run `TweetsFilter.java` class to stream tweets from `twitter_tweets` topic and filter tweets with more than `10000` followers.
