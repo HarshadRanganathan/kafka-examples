@@ -15,7 +15,7 @@ public class PaymentProducer {
     private final KafkaTemplate<Account, SpecificRecordBase> kafkaTemplate;
 
     public boolean processPayment(final SpecificRecordBase payment, final String topic) {
-        sendTransaction(topic, new Account(payment.getSchema().getProp("name"), payment.getSchema().getProp("iban")), payment);
+        sendTransaction(topic, new Account(payment.get("name").toString(), payment.get("iban").toString()), payment);
         return true;
     }
 
