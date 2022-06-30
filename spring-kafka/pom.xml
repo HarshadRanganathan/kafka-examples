@@ -16,6 +16,7 @@
         <maven.compiler.target>8</maven.compiler.target>
         <spring.boot.version>2.5.1</spring.boot.version>
         <avro.version>1.11.0</avro.version>
+        <lombok.version>1.18.22</lombok.version>
     </properties>
 
     <dependencyManagement>
@@ -32,6 +33,12 @@
     </dependencyManagement>
 
     <dependencies>
+
+        <!-- Starter for building web, including RESTful, applications using Spring MVC. Uses Tomcat as the default embedded container -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
 
         <!-- enable production ready features -->
         <dependency>
@@ -53,6 +60,13 @@
             <groupId>org.apache.avro</groupId>
             <artifactId>avro</artifactId>
             <version>${avro.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
         </dependency>
 
     </dependencies>
