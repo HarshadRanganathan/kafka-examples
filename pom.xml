@@ -25,6 +25,7 @@
     <modules>
         <module>basics</module>
         <module>twitter</module>
+        <module>spring-kafka</module>
     </modules>
 
     <dependencies>
