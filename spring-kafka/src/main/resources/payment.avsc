@@ -1,0 +1,13 @@
+{
+    "type": "record",
+    "name": "Payment",
+    "namespace": "example.avro",
+    "fields": [
+        {"name": "name", "type": "string"},
+        {"name": "iban", "type":  "string"},
+        {"name": "toIban", "type":  "string"},
+        {"name": "amount", "type":  "float"},
+        {"name": "balance", "type":  "float"},
+        {"name": "processed", "type":  "boolean"}
+    ]
+}
