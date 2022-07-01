@@ -56,6 +56,11 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
+        <!-- When using Spring for Apache Kafka in a Spring Boot application,
+        the Apache Kafka dependency versions are determined by Spring Boot’s dependency management.
+        If you wish to use a different version of kafka-clients or kafka-streams, such as 2.8.0,
+        you need to override all of the associated dependencies.
+        -->
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
