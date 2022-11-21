@@ -19,6 +19,7 @@
         <avro.version>1.11.0</avro.version>
         <confluent.version>6.1.6</confluent.version>
         <lombok.version>1.18.22</lombok.version>
+        <schema.registry.url>http://localhost:8081</schema.registry.url>
     </properties>
 
     <repositories>
@@ -28,6 +29,14 @@
             <url>https://packages.confluent.io/maven/</url>
         </repository>
     </repositories>
+
+    <pluginRepositories>
+        <!-- other maven repositories the project -->
+        <pluginRepository>
+            <id>confluent</id>
+            <url>https://packages.confluent.io/maven/</url>
+        </pluginRepository>
+    </pluginRepositories>
 
     <dependencyManagement>
         <dependencies>
@@ -122,6 +131,34 @@
                         <configuration>
                             <sourceDirectory>${project.basedir}/src/main/resources/</sourceDirectory>
                             <outputDirectory>${project.basedir}/target/generated-sources/avro</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>io.confluent</groupId>
+                <artifactId>kafka-schema-registry-maven-plugin</artifactId>
+                <version>${confluent.version}</version>
+                <configuration>
+                    <schemaRegistryUrls>
+                        <param>${schema.registry.url}</param>
+                    </schemaRegistryUrls>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>register</id>
+                        <goals>
+                            <goal>register</goal>
+                        </goals>
+                        <configuration>
+                            <subjects>
+                                <payment>src/main/resources/payment.avsc</payment>
+                                <account>src/main/resources/account.avsc</account>
+                            </subjects>
+                            <schemaTypes>
+                                <payment>AVRO</payment>
+                                <account>AVRO</account>
+                            </schemaTypes>
                         </configuration>
                     </execution>
                 </executions>
