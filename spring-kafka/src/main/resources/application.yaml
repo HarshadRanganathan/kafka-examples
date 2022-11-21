@@ -1,10 +1,14 @@
 spring:
   kafka:
+#    bootstrap-servers:
+
     producer:
       key-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
       value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
 
     consumer:
+#      group-id:
+#      auto-offset-reset: earliest
       key-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
       value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
 
@@ -16,3 +20,10 @@ spring:
       specific:
         avro:
           reader: true
+
+#      security:
+#        protocol: SASL_SSL
+#      sasl:
+#        jaas:
+#          config: org.apache.kafka.common.security.plain.PlainLoginModule required username='' password='';
+#        mechanism: PLAIN
