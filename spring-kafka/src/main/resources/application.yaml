@@ -1,0 +1,18 @@
+spring:
+  kafka:
+    producer:
+      key-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+
+    consumer:
+      key-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+      value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+
+    # Additional properties, common to producers and consumers, used to configure the client
+    properties:
+      schema:
+        registry:
+          url: http://localhost:8081
+      specific:
+        avro:
+          reader: true
