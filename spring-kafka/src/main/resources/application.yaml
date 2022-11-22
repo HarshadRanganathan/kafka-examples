@@ -22,8 +22,14 @@ spring:
       value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
 
       properties:
-        # cooperative re-balancing and therefore consumers can keep on consuming from the topic while the affected partition assignments are redistributed incrementally
+#        cooperative re-balancing and therefore consumers can keep on consuming from the topic while the affected partition assignments are redistributed incrementally
+#        useful only when small number of consumers are lost and fewer partitions need to be re-assigned
         partition.assignment.strategy: org.apache.kafka.clients.consumer.CooperativeStickyAssignor
+
+#        unique identifier of the consumer instance to treat this instance as a static member
+#        if the consumer instance re-joins before session.timeout.ms then same partitions are assigned and no re-balance occurs
+#        if using kubernetes, you can map the pod metadata name to the group instance id to handle pod restarts
+        group.instance.id: ${GROUP_INSTANCE_ID:1}
 
     # Additional properties, common to producers and consumers, used to configure the client
     properties:
