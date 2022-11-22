@@ -15,8 +15,15 @@ spring:
     # Additional properties, common to producers and consumers, used to configure the client
     properties:
       schema.registry.url: http://localhost:8081
+
+      # derive schema subject name from record name instead of topic name
+      key.subject.name.strategy: io.confluent.kafka.serializers.subject.RecordNameStrategy
+      value.subject.name.strategy: io.confluent.kafka.serializers.subject.RecordNameStrategy
+
       specific.avro.reader: true
       use.latest.version: true
+
+      # register schemas through schema registry plugin as part of CI/CD process
       auto.register.schemas: false
 
 #      security:

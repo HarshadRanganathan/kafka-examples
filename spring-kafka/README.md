@@ -6,6 +6,12 @@ Mark `generated-sources` as src directory in your IDE.
 
 Run the Spring boot app.
 
+### Schema Registry
+
+To register schemas from the local file system on the target Schema Registry server:
+
+`mvn schema-registry:register@register`
+
 ## Docs
 
 <https://docs.spring.io/spring-boot/docs/current/reference/html/messaging.html#messaging.kafka>

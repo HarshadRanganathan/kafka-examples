@@ -144,6 +144,7 @@
                         <param>${schema.registry.url}</param>
                     </schemaRegistryUrls>
                 </configuration>
+                <!-- This goal is used to read schemas from the local file system and register them on the target Schema Registry server(s) -->
                 <executions>
                     <execution>
                         <id>register</id>
@@ -152,12 +153,12 @@
                         </goals>
                         <configuration>
                             <subjects>
-                                <payment>src/main/resources/payment.avsc</payment>
-                                <account>src/main/resources/account.avsc</account>
+                                <example.avro.Payment>src/main/resources/payment.avsc</example.avro.Payment>
+                                <example.avro.Account>src/main/resources/account.avsc</example.avro.Account>
                             </subjects>
                             <schemaTypes>
-                                <payment>AVRO</payment>
-                                <account>AVRO</account>
+                                <example.avro.Payment>AVRO</example.avro.Payment>
+                                <example.avro.Account>AVRO</example.avro.Account>
                             </schemaTypes>
                         </configuration>
                     </execution>
