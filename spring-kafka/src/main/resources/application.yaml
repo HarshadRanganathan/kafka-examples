@@ -5,6 +5,15 @@ spring:
     producer:
       key-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
       value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+      compression-type: lz4
+
+#      batch size in bytes
+#      records larger than this size won't be batched
+#      records are batched for each partition - so make sure that you don’t set it to a number that’s too high, otherwise you may run into high memory usages
+      batch-size: 100000
+
+      properties:
+        linger.ms: 10
 
     consumer:
 #      group-id:
