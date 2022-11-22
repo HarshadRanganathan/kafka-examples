@@ -8,6 +8,14 @@ Run the Spring boot app.
 
 ### Schema Registry
 
+To test compatibility against schema register server, before registering the schemas:
+
+`mvn schema-registry:validate@validate`
+
+To test compatibility against schema register server, before registering the schemas:
+
+`mvn schema-registry:validate@test-compatibility`
+
 To register schemas from the local file system on the target Schema Registry server:
 
 `mvn schema-registry:register@register`

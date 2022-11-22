@@ -139,13 +139,54 @@
                 <groupId>io.confluent</groupId>
                 <artifactId>kafka-schema-registry-maven-plugin</artifactId>
                 <version>${confluent.version}</version>
+
                 <configuration>
                     <schemaRegistryUrls>
                         <param>${schema.registry.url}</param>
                     </schemaRegistryUrls>
                 </configuration>
-                <!-- This goal is used to read schemas from the local file system and register them on the target Schema Registry server(s) -->
+
                 <executions>
+
+                    <!-- This goal is used to read schemas from the local file system and validate them locally, before registering them -->
+                    <execution>
+                        <id>validate</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>validate</goal>
+                        </goals>
+                        <configuration>
+                            <subjects>
+                                <example.avro.Payment>src/main/resources/payment.avsc</example.avro.Payment>
+                                <example.avro.Account>src/main/resources/account.avsc</example.avro.Account>
+                            </subjects>
+                            <schemaTypes>
+                                <example.avro.Payment>AVRO</example.avro.Payment>
+                                <example.avro.Account>AVRO</example.avro.Account>
+                            </schemaTypes>
+                        </configuration>
+                    </execution>
+
+                    <!-- This goal is used to read schemas from the local file system and test them for compatibility against the Schema Registry server(s) -->
+                    <execution>
+                        <id>test-compatibility</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>test-compatibility</goal>
+                        </goals>
+                        <configuration>
+                            <subjects>
+                                <example.avro.Payment>src/main/resources/payment.avsc</example.avro.Payment>
+                                <example.avro.Account>src/main/resources/account.avsc</example.avro.Account>
+                            </subjects>
+                            <schemaTypes>
+                                <example.avro.Payment>AVRO</example.avro.Payment>
+                                <example.avro.Account>AVRO</example.avro.Account>
+                            </schemaTypes>
+                        </configuration>
+                    </execution>
+
+                    <!-- This goal is used to read schemas from the local file system and register them on the target Schema Registry server(s) -->
                     <execution>
                         <id>register</id>
                         <goals>
