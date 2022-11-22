@@ -21,6 +21,10 @@ spring:
       key-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
       value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
 
+      properties:
+        # cooperative re-balancing and therefore consumers can keep on consuming from the topic while the affected partition assignments are redistributed incrementally
+        partition.assignment.strategy: org.apache.kafka.clients.consumer.CooperativeStickyAssignor
+
     # Additional properties, common to producers and consumers, used to configure the client
     properties:
       schema.registry.url: http://localhost:8081
