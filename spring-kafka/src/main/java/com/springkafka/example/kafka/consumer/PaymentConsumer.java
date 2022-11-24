@@ -14,7 +14,7 @@ public class PaymentConsumer {
 
     private Payment payment;
 
-    @KafkaListener(topics = "payments", groupId = "consumer-group-1")
+    @KafkaListener(topics = "payments", groupId = "payment-app")
     public void consume(final ConsumerRecord<?, ?> consumerRecord) {
         log.info("Received payload='{}'", consumerRecord.value());
 
