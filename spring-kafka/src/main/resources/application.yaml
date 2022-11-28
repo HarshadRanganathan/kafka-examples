@@ -17,7 +17,7 @@ spring:
 
     consumer:
 #      group-id:
-#      auto-offset-reset: earliest
+      auto-offset-reset: earliest
       key-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
       value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
 
