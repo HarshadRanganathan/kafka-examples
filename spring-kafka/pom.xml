@@ -16,7 +16,7 @@
         <maven.compiler.target>8</maven.compiler.target>
         <spring.boot.version>2.5.1</spring.boot.version>
         <kafka.clients.version>2.7.2</kafka.clients.version>
-        <avro.version>1.11.0</avro.version>
+        <avro.version>1.11.3</avro.version>
         <confluent.version>6.1.6</confluent.version>
         <lombok.version>1.18.22</lombok.version>
         <schema.registry.url>http://localhost:8081</schema.registry.url>
